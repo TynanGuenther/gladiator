@@ -36,6 +36,7 @@
 *.exe
 *.out
 *.app
+gladiator
 
 # debug information files
 *.dwo
