@@ -26,7 +26,7 @@ int main() {
 
 	//Player Turn
 	if (choice == 1) {
-	    int player_attack = 10 + (std::rand() % 6); // 10-15
+	    int player_attack = 10 + (std::rand() % 5); // 10-14
 	    enemy_hp -= player_attack;
 	    std::cout << "You attack for " << player_attack << " damage!\n";
 	} else if (choice == 2) {
@@ -41,12 +41,18 @@ int main() {
 	}
 
 	//Enemy Turn
-	int enemy_attack = 8 + (std::rand() % 5); // 8-12
+	int enemy_attack = 8 + (std::rand() % 6); // 8-13
 	player_hp -= enemy_attack;
 	std::cout << "Enemy attacks for " << enemy_attack << " damage.\n";
     }
 
-    std::cout << "\nGame Over!\n";
+    if(player_hp <= 0 && enemy_hp <= 0) {
+	std::cout << "\nIt's a draw!\n";
+    } else if (enemy_hp <= 0) {
+	std::cout << "\nYOU WIN!\n";
+    } else {
+	std::cout << "\nYou Lose :(\n";
+    }
     return 0;
 }
 
