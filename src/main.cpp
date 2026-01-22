@@ -1,5 +1,10 @@
 #include <iostream>
 
+const int MAX_HP = 100;
+const int PLAYER_ATTACK = 15;
+const int ENEMY_ATTACK = 10;
+const int HEAL_AMOUNT = 10;
+
 int main() {
 
     int player_hp = 100;
@@ -17,18 +22,28 @@ int main() {
 	int choice;
 	std::cin >> choice;
 
-	//placeholder logic
+	//Player Turn
 	if (choice == 1) {
-	    std::cout << "You attack (not implemented yet)\n";
+	    enemy_hp -= PLAYER_ATTACK;
+	    std::cout << "You attack for " << PLAYER_ATTACK << " damage!\n";
 	} else if (choice == 2) {
-	    std::cout << "You heal (not implemented yet)\n";
+	    player_hp += HEAL_AMOUNT;
+	    if (player_hp > MAX_HP) {
+		player_hp = MAX_HP;
+	    }
+	    std::cout << "You heal for " << HEAL_AMOUNT << " HP.\n";
 	} else {
-	    std::cout << "Invalid choice\n";
+	    std::cout << "Invalid choice.\n";
+	    continue;
 	}
 
-	std::cout << "Enemy attacks (not implemented yet)\n";
+	//Enemy Turn
+	player_hp -= ENEMY_ATTACK;
+	std::cout << "Enemy attacks for " << ENEMY_ATTACK << " damage.\n";
     }
 
     std::cout << "\nGame Over!\n";
     return 0;
 }
+
+
