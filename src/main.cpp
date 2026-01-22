@@ -1,11 +1,13 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
-const int MAX_HP = 100;
-const int PLAYER_ATTACK = 15;
-const int ENEMY_ATTACK = 10;
-const int HEAL_AMOUNT = 10;
 
 int main() {
+    std::srand(std::time(nullptr));
+
+    const int MAX_HP = 100;
+    const int HEAL_AMOUNT = 10;
 
     int player_hp = 100;
     int enemy_hp = 100;
@@ -24,8 +26,9 @@ int main() {
 
 	//Player Turn
 	if (choice == 1) {
-	    enemy_hp -= PLAYER_ATTACK;
-	    std::cout << "You attack for " << PLAYER_ATTACK << " damage!\n";
+	    int player_attack = 10 + (std::rand() % 6); // 10-15
+	    enemy_hp -= player_attack;
+	    std::cout << "You attack for " << player_attack << " damage!\n";
 	} else if (choice == 2) {
 	    player_hp += HEAL_AMOUNT;
 	    if (player_hp > MAX_HP) {
@@ -38,8 +41,9 @@ int main() {
 	}
 
 	//Enemy Turn
-	player_hp -= ENEMY_ATTACK;
-	std::cout << "Enemy attacks for " << ENEMY_ATTACK << " damage.\n";
+	int enemy_attack = 8 + (std::rand() % 5); // 8-12
+	player_hp -= enemy_attack;
+	std::cout << "Enemy attacks for " << enemy_attack << " damage.\n";
     }
 
     std::cout << "\nGame Over!\n";
